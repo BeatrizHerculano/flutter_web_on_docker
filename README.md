@@ -1,6 +1,17 @@
-# global_backoffice_flutter
+# flutter_on_docker
 
 A new Flutter project.
+
+### To build image
+```
+docker image build -t flutter-on-docker -f ./Dockerfile .   
+```
+
+### To run a container
+run this command inside the root of this project
+```
+docker container run -p 3000:3000 --volume ${PWD}:/app/ -it flutter-on-docker
+```
 
 ## Getting Started
 
