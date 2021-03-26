@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+    flutter_web:
+        build: .
+        restart: on-failure
+        volumes:
+          - .:/app/
+        ports:
+            - "3000:3000"
+        command: >
+            sh -c "flutter pub get; flutter run -d web-server --web-port 3000 --web-hostname 0.0.0.0"
+

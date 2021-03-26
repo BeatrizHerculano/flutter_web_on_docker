@@ -1,5 +1,5 @@
 #Stage 1 - Install dependencies and build the app
-FROM ubuntu:latest AS build-env
+FROM ubuntu:18.04 AS build-env
 
 # Install flutter dependencies
 RUN apt-get update 
@@ -15,11 +15,10 @@ ENV PATH="/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin:${PAT
 RUN flutter doctor -v
 RUN flutter channel stable
 RUN flutter upgrade
-
+RUN flutter config --enable-web
 
 WORKDIR /app/
 
 EXPOSE 3000
 
-CMD flutter pub get; flutter run -d web-server --web-port=3000
-
+CMD ["sh", "./start.sh"]
