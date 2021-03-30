@@ -3,14 +3,25 @@
 A new Flutter project.
 
 ### To build image
+
 ```
-docker image build -t flutter-on-docker -f ./Dockerfile .   
+docker image build -t flutter-on-docker -f ./Dockerfile .
 ```
 
-### To run a container
+### To run a container with web
+
 run this command inside the root of this project
+
 ```
 docker container run -p 3000:3000 --volume ${PWD}:/app/ -it flutter-on-docker
+```
+
+### To run a container with desktop
+
+Ensure you're running an X11 server on your machine and that the DISPLAY environment variable is pointing to it then run this command inside the root of this project
+
+```
+docker container run -e DISPLAY=${DISPLAY} --volume ${PWD}:/app/ -it flutter-on-docker
 ```
 
 ## Getting Started
